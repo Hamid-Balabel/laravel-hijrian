@@ -24,6 +24,8 @@ class LaravelHijrian
      */
     public static function hijri($date = null)
     {
+        self::$date = new Carbon;
+
         [$year, $month, $day] = explode('-', self::$date->parse($date)->format('Y-m-d'));
 
         return self::gth((int) $year, (int) $month, (int) $day);
@@ -51,6 +53,8 @@ class LaravelHijrian
      */
     public static function gregory($date = null)
     {
+        self::$date = new Carbon;
+
         if (empty($date)) {
             return self::$date->now();
         }
